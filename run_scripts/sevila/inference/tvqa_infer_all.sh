@@ -2,6 +2,7 @@
 
 # Define directory where TVQA json files are located in
 ROOT_PATH="/home/hlpark/shared/REDUCE/REDUCE_benchmarks/SeViLA/sevila_data/tvqa"
+VIDEO_LIST_PATH="/home/hlpark/shared/REDUCE/REDUCE_benchmarks/SeViLA/sevila_data/tvqa_list/vid_name_list.txt"
 
 # Check if the folder exists
 if [ ! -d "$ROOT_PATH" ]; then
@@ -10,7 +11,7 @@ if [ ! -d "$ROOT_PATH" ]; then
 fi
 
 #read video names
-vid_names=$(python read_vid_name.py)
+vid_names=$(python read_vid_name.py --video_list_filepath $VIDEO_LIST_PATH)
 
 # Iterate through each file in the folder
 for video in $vid_names;

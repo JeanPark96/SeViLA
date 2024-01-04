@@ -4,6 +4,7 @@ video_name=$1
 train_path=$2
 val_path=$3
 test_path=$4
+data='tvqa'
 exp_name='tvqa_infer'
 #modify
 video_path="/home/hlpark/shared/TVQA/video/video_files"
@@ -19,10 +20,10 @@ if [ ! -f "$yaml_file" ]; then
     exit 1
 fi
 
-python edit_yaml.py --yaml-path $yaml_file --train-path $train_path --val-path $val_path --test-path $test_path --video-path $video_path 
+python edit_yaml.py --yaml-path $yaml_file --train-path $train_path --val-path $val_path --test-path $test_path --video-path $video_path --data $data
 
 # Get frame number from input video
-frame_num=$(python video_frame.py --video-path ${video_path}/$video_name)
+frame_num=$(python video_frame.py --video-path ${video_path}/$video_name --data $data --downsample 3)
 
 echo "Frame num for $video_name is $frame_num"
 

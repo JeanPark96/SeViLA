@@ -423,7 +423,8 @@ class VideoQA(BaseTask):
 
     def valid_step(self, model, samples):
         results = []
-
+        #print("valid step")
+        #print(samples)
         outputs = model.generate(samples)
 
         answer = outputs["answer"]
@@ -483,8 +484,11 @@ class VideoQA(BaseTask):
                 if qtype not in qtype_correct_dict:
                     qtype_correct_dict[qtype] = 1
                 else:
-                    qtype_correct_dict[qtype] += 1 
-        
+                    qtype_correct_dict[qtype] += 1
+            else:
+                if qtype not in qtype_correct_dict:
+                    qtype_correct_dict[qtype] = 0
+        print(f"qtype total dictionary: {qtype_total_dict}")
         metrics = {"agg_metrics": acc/total_num , 'total':total_num}
         
         for qtype in qtype_total_dict:

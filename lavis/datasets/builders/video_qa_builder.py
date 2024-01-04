@@ -71,6 +71,12 @@ class TVQABuilder(MCVideoQABuilder):
     DATASET_CONFIG_DICT = {
         "default": "configs/datasets/tvqa/defaults_qa.yaml",
     }
+
+@registry.register_builder("medvidqa")
+class MedVidQABuilder(MCVideoQABuilder):
+    DATASET_CONFIG_DICT = {
+        "default": "configs/datasets/medvidqa/defaults_qa.yaml",
+    }
     
 @registry.register_builder("how2qa")
 class How2QABuilder(MCVideoQABuilder):

@@ -16,8 +16,8 @@ vid_names=$(python read_vid_name.py --video_list_filepath $VIDEO_LIST_PATH)
 for video in $vid_names;
 do
     # only validation json file will be evaluated
-    if [ -f "${ROOT_PATH}/${video}_test.json" ]; then
+    if [ -f "${ROOT_PATH}/${video}_val.json" ]; then
         echo $video
-        ./run_scripts/sevila/inference/medvidqa_infer_vid.sh $video ${ROOT_PATH}/${video}_test.json ${ROOT_PATH}/${video}_test.json ${ROOT_PATH}/${video}_test.json
+        ./run_scripts/sevila/inference/medvidqa_infer_vid.sh $video ${ROOT_PATH}/${video}_val.json ${ROOT_PATH}/${video}_val.json ${ROOT_PATH}/${video}_val.json
     fi 
 done

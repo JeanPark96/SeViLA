@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define directory where TVQA json files are located in
-ROOT_PATH="/home/hlpark/shared/REDUCE/REDUCE_benchmarks/SeViLA/sevila_data/tvqa"
-VIDEO_LIST_PATH="/home/hlpark/shared/REDUCE/REDUCE_benchmarks/SeViLA/sevila_data/tvqa_list/vid_name_list.txt"
+ROOT_PATH="/home/hlpark/REDUCE/REDUCE_benchmarks/SeViLA/sevila_data/tvqa"
+VIDEO_LIST_PATH="/home/hlpark/REDUCE/REDUCE_benchmarks/SeViLA/sevila_data/tvqa_list/vid_name_list.txt"
 
 # Check if the folder exists
 if [ ! -d "$ROOT_PATH" ]; then
@@ -17,8 +17,8 @@ vid_names=$(python read_vid_name.py --video_list_filepath $VIDEO_LIST_PATH)
 for video in $vid_names;
 do
     # only validation json file will be evaluated
-    if [ -f "${ROOT_PATH}/${video}_val.json" ]; then
+    if [ -f "${ROOT_PATH}/${video}_test_gt.json" ]; then
         echo $video
-        ./run_scripts/sevila/inference/tvqa_infer_vid.sh $video ${ROOT_PATH}/${video}_val.json ${ROOT_PATH}/${video}_val.json ${ROOT_PATH}/${video}_val.json
+        ./run_scripts/sevila/inference/tvqa_infer_vid.sh $video ${ROOT_PATH}/${video}_test_gt.json ${ROOT_PATH}/${video}_test_gt.json ${ROOT_PATH}/${video}_test_gt.json
     fi 
 done

@@ -35,6 +35,7 @@ def load_video(video_path, n_frms=MAX_INT, height=-1, width=-1, sampling="unifor
         start, end = 0, vlen
     else:
         start, end = int(clip_proposal[0]*fps), int(clip_proposal[1]*fps)
+        
         if start < 0:
             start = 0
         if end > vlen:
@@ -53,8 +54,8 @@ def load_video(video_path, n_frms=MAX_INT, height=-1, width=-1, sampling="unifor
             else:
                 indices.append(rnd.choice(range(x[0], x[1])))
     elif sampling == 'uniform':
-        
         indices = [(x[0] + x[1]) // 2 for x in ranges]
+        print(f"{video_path} \n{clip_proposal} \n{indices}\n\n")
 
     elif sampling == "headtail":
         indices_h = sorted(rnd.sample(range(vlen // 2), n_frms // 2))
@@ -105,6 +106,8 @@ def load_video_demo(video_path, n_frms=MAX_INT, height=-1, width=-1, sampling="u
         indices_h = sorted(rnd.sample(range(vlen // 2), n_frms // 2))
         indices_t = sorted(rnd.sample(range(vlen // 2, vlen), n_frms // 2))
         indices = indices_h + indices_t
+    elif sampling == "clip_uniform":
+        print(sampling)
     else:
         raise NotImplementedError
     

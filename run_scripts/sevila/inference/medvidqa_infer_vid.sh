@@ -1,5 +1,5 @@
 # parameters/data path
-result_dir="/home/hlpark/REDUCE/REDUCE_benchmarks/SeViLA/sevila_medvidqa_result_test"
+result_dir="/home/hlpark/REDUCE/REDUCE_benchmarks/SeViLA/sevila_medvidqa_result"
 video_name=$1
 train_path=$2
 val_path=$3

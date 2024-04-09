@@ -594,6 +594,7 @@ class SeViLA(Blip2Base):
                     # q
                     print(loc_yes.shape)
                     select_frames_idx = torch.topk(loc_yes, self.frame_num, dim=-1).indices.tolist()
+                    print(len(pred_logits_loc), len(loc_yes))
                     all_frames_idx = torch.topk(loc_yes, len(pred_logits_loc), dim=-1).indices.tolist()
                     sorted_frames_idx = []
                     image_embeds = self.ln_vision(image_embeds)
